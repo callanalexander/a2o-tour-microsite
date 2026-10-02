@@ -113,6 +113,51 @@ params:
               - 2
               - 3
               - 4
+    - name: "Monjebup Reserve"
+      tags:
+        - "Western Whipbird"
+        - "Malleefowl"
+        - "Weebill"
+        - "Stubble Quail"
+        - "Carnaby's Black-Cockatoo"
+      filters:
+        filter:
+          sites.id:
+            in:
+              - 361
+              - 362
+              - 363
+              - 364
+    - name: "Marshmead"
+      tags:
+        - "Yellow-bellied Glider"
+        - "Bell Miner"
+        - "Superb Lyrebird"
+        - "Wonga Pigeon"
+        - "Yellow-tailed Black-Cockatoo"
+      filters:
+        filter:
+          sites.id:
+            in:
+              - 309
+              - 310
+              - 311
+              - 312
+    - name: "Binya"
+      tags:
+        - "Painted Honeyeater"
+        - "Horsfield's Bronze-cuckoo"
+        - "Red-capped Robin"
+        - "Striped Honeyeater"
+        - "Tawny Frogmouth"
+      filters:
+        filter:
+          sites.id:
+            in:
+              - 333
+              - 334
+              - 335
+              - 336
   map:
     min_zoom: 1
     max_zoom: 21
@@ -231,6 +276,85 @@ params:
               image: "images/species/Brown-Treecreeper.jpg"
               examples:
                 - url: "https://api.acousticobservatory.org/audio_recordings/7213/media.mp3?end_offset=4200&start_offset=4170"
+      - campaign: "Monjebup Reserve"
+        latitude: -34.243607
+        longitude: 118.560849
+        page: "/monjebup/"
+        description: "Mallee and heathland in south-western Australia that shelters several threatened species."
+        content:
+          species:
+            - name: "Western Whipbird"
+              description: "A shy, olive-grey bird of dense mallee and heath that is far more often heard than seen, with pairs singing a duet of scratchy whistles."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/156490/media.mp3?end_offset=60&start_offset=30"
+            - name: "Malleefowl"
+              description: "A large, ground-dwelling bird of mallee country; males tend huge incubation mounds and give deep, booming calls."
+            - name: "Weebill"
+              description: "Australia's smallest bird, a pale, short-billed canopy forager that moves through eucalypts in busy groups with a loud, cheerful song."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/344871/media.mp3?end_offset=4830&start_offset=4800"
+            - name: "Stubble Quail"
+              description: "A cryptic, ground-dwelling quail of grassland and crops, usually detected by its far-carrying, repeated whistled call."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/344510/media.mp3?end_offset=7140&start_offset=7110"
+            - name: "Baudin's/Carnaby's Black Cockatoo"
+              description: "Two closely related white-tailed black cockatoos found only in south-western Australia, which travel in noisy flocks and give wailing contact calls."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/351141/media.mp3?end_offset=4350&start_offset=4320"
+      - campaign: "Marshmead"
+        latitude: -37.486020
+        longitude: 149.831509
+        page: "/marshmead/"
+        description: "Tall coastal forest in far East Gippsland, rich with nocturnal and forest-dwelling species."
+        content:
+          species:
+            - name: "Yellow-bellied Glider"
+              description: "A nocturnal glider of tall eucalypt forest that feeds on sap and nectar and is known for its loud, gurgling shrieks."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1209740/media.mp3?end_offset=7170&start_offset=7140"
+            - name: "Bell Miner"
+              description: "A colonial green honeyeater whose constant, tinkling bell-like calls ring through the forest understorey."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1208936/media.mp3?end_offset=6990&start_offset=6960"
+            - name: "Superb Lyrebird"
+              description: "A large ground-dwelling songbird famous for its elaborate song, which mimics many other forest species."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1209384/media.mp3?end_offset=4980&start_offset=4950"
+            - name: "Wonga Pigeon"
+              description: "A plump grey-and-white pigeon of the forest floor that repeats a loud, monotonous call for long periods."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1209912/media.mp3?end_offset=3720&start_offset=3690"
+            - name: "Yellow-tailed Black-Cockatoo"
+              description: "A large black cockatoo with yellow cheek and tail panels that feeds on seeds and wood-boring grubs and gives a far-carrying, wailing call."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1214877/media.mp3?end_offset=5490&start_offset=5460"
+      - campaign: "Binya"
+        latitude: -34.219819
+        longitude: 146.267081
+        page: "/binya/"
+        description: "Dry inland woodland in the Riverina of New South Wales, home to mistletoe specialists and woodland birds."
+        content:
+          species:
+            - name: "Painted Honeyeater"
+              description: "A nomadic black-and-white honeyeater with yellow wing edges that specialises in mistletoe fruit."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1452067/media.mp3?end_offset=750&start_offset=720"
+            - name: "Horsfield's Bronze Cuckoo"
+              description: "A small bronze-green cuckoo that lays its eggs in other birds' nests and gives a descending, whistled call."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1240530/media.mp3?end_offset=4380&start_offset=4350"
+            - name: "Red-capped Robin"
+              description: "A small dry-woodland robin; males have a bright red cap and breast and sing a rapid, insect-like trill."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/1243187/media.mp3?end_offset=690&start_offset=660"
+            - name: "Striped Honeyeater"
+              description: "A streaky grey-and-white honeyeater of inland woodland that builds a hanging nest and sings rich, rollicking phrases."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/670669/media.mp3?end_offset=5280&start_offset=5250"
+            - name: "Tawny Frogmouth"
+              description: "A nocturnal, owl-like bird that roosts by day disguised as a broken branch and gives a low, repeated 'oom' call at night."
+              examples:
+                - url: "https://api.acousticobservatory.org/audio_recordings/667535/media.mp3?end_offset=1350&start_offset=1320"
   style:
     xsmallBreakPoint: 425px
     smallBreakPoint: 768px
