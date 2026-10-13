@@ -25,7 +25,7 @@
               {{ with $credit.author }}<p>&copy; {{ . }}</p>{{ end }}
               {{ with $credit.source }}
                 {{ $sourceURL := urls.Parse . }}
-                <p><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $sourceURL.Host }}</a></p>
+                <p><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "www." $sourceURL.Host }}</a></p>
               {{ end }}
               {{ with $credit.license }}
                 {{ $licenseKey := lower . }}
@@ -85,6 +85,7 @@
 
   #image-credits-page .image-credit figcaption {
     padding: var(--micro-padding-medium);
+    overflow-wrap: anywhere;
   }
 
   #image-credits-page .image-credit h2,
