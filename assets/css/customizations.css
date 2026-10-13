@@ -20,8 +20,8 @@
 	--color-map-ink: #243238;
 	--color-map-marker: #c7623d;
 	--color-map-marker-active: #f2b66f;
-	--color-map-coast: #a2c2a5;
-	--color-map-land: rgba(99, 126, 101, 0.9);
+	--color-map-coast: rgba(99, 126, 101, 0.1);
+	--color-map-land: rgba(99, 126, 101, 0.7);
 
 	--color-overlay: rgba(0, 0, 0, 0.5);
 	--color-overlay-strong: rgba(0, 0, 0, 0.75);
@@ -67,6 +67,7 @@
 	grid-column: fullbleed;
 	position: relative;
 	padding-top: var(--space-xlarge);
+	padding-bottom: var(--section-padding);
 	background-position: top center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -94,8 +95,10 @@
 }
 
 #verify-page oe-verification-grid {
-	--oe-background-color: transparent !important;
+	--oe-background-color: var(--color-surface) !important;
 	--oe-panel-color: var(--color-surface) !important;
+	border-radius: var(--radius-callout);
+	background-color: var(--color-surface);
 }
 
 #verify-page oe-verification-grid[grid-size="1"] {
