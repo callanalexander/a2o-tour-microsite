@@ -1,105 +1,52 @@
 {{ define "main" }}
 <div id="image-credits-page" class="page">
-  <section class="page-section fullbleed image-credits-section">
-    <div class="page-section-content">
-      <h1>{{ .Title }}</h1>
-      {{ .Content }}
+  <section class="site-cards" aria-labelledby="image-credits-title">
+    <a class="page-back" href="/">
+      <sl-icon name="arrow-left" aria-hidden="true"></sl-icon>
+      <span>Ecoacoustic Tour of Australia</span>
+    </a>
+    <h1 id="image-credits-title">{{ .Title }}</h1>
+    {{ with .Content }}<div class="site-cards-intro">{{ . }}</div>{{ end }}
 
-      <div class="image-credits-grid">
-        {{- $licenseLinks := dict
-          "cc-by" "https://creativecommons.org/licenses/by/4.0/"
-          "cc-by-sa" "https://creativecommons.org/licenses/by-sa/4.0/"
-          "cc0" "https://creativecommons.org/public-domain/zero/1.0/"
-        -}}
-        {{ range $index, $item := .Params.credits }}
-          {{ $credit := $item }}
-          {{ $image := resources.Get $credit.image }}
-          <figure class="image-credit">
-            {{ with $image }}
-              <div class="image-credit-media">
-                <img src="{{ .RelPermalink }}" alt="{{ $credit.title }}">
-              </div>
-            {{ end }}
-            <figcaption>
-              <h2>{{ $credit.title }}</h2>
-              {{ with $credit.author }}<p><strong>By:</strong> {{ . }}</p>{{ end }}
-              {{ with $credit.source }}
-                {{ $sourceURL := urls.Parse . }}
-                <p><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $sourceURL.Host }}</a></p>
+    <div class="cards-grid">
+      {{- $licenseLinks := dict
+        "cc-by" "https://creativecommons.org/licenses/by/4.0/"
+        "cc-by-sa" "https://creativecommons.org/licenses/by-sa/4.0/"
+        "cc0" "https://creativecommons.org/public-domain/zero/1.0/"
+      -}}
+      {{ range $credit := .Params.credits }}
+        {{ $image := resources.Get $credit.image }}
+        <article class="site-card image-credit">
+          <div class="site-info">
+            <div class="site-info-visual">
+              {{ with $image }}
+                <img class="site-info-image" src="{{ (.Fill "600x400 center").RelPermalink }}" alt="{{ $credit.title }}" loading="lazy">
               {{ end }}
-              {{ with $credit.license }}
-                {{ $licenseKey := lower . }}
-                <p>
-                  <strong>License:</strong>
-                  {{ with index $licenseLinks $licenseKey }}
-                    <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $credit.license }}</a>
-                  {{ else }}
-                    {{ $credit.license }}
-                  {{ end }}
-                </p>
-              {{ end }}
-            </figcaption>
-          </figure>
-        {{ end }}
+              <h2 class="site-info-title">{{ $credit.title }}</h2>
+            </div>
+            <div class="site-info-content">
+              <p class="site-info-text">
+                {{ with $credit.author }}<span><strong>By:</strong> {{ . }}</span>{{ end }}
+                {{ with $credit.source }}
+                  {{ $sourceURL := urls.Parse . }}
+                  <span><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "www." $sourceURL.Host }}</a></span>
+                {{ end }}
+                {{ with $credit.license }}
+                  {{ $licenseKey := lower . }}
+                  <span></span>
+                    {{ with index $licenseLinks $licenseKey }}
+                      <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $credit.license }}</a>
+                    {{ else }}
+                      {{ $credit.license }}
+                    {{ end }}
+                  </span>
+                {{ end }}
+              </p>
+            </div>
+          </div>
+        </article>
+      {{ end }}
     </div>
   </section>
 </div>
-
-<style>
-  #image-credits-page .image-credits-section {
-    padding: var(--micro-padding-large) 0;
-  }
-
-  #image-credits-page .page-section-content {
-    width: 100%;
-  }
-
-  #image-credits-page h1 {
-    margin-top: 0;
-  }
-
-  #image-credits-page .image-credits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: var(--micro-padding-medium);
-    margin-top: var(--micro-padding-large);
-  }
-
-  #image-credits-page .image-credit {
-    min-width: 0;
-    margin: 0;
-    border: 1px solid #c8d4d2;
-    background: var(--micro-panel-color);
-  }
-
-  #image-credits-page .image-credit-media {
-    aspect-ratio: 3 / 2;
-  }
-
-  #image-credits-page .image-credit img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #image-credits-page .image-credit figcaption {
-    padding: var(--micro-padding-medium);
-  }
-
-  #image-credits-page .image-credit h2,
-  #image-credits-page .image-credit p {
-    margin: 0;
-  }
-
-  #image-credits-page .image-credit h2 {
-    font-size: var(--micro-font-size-small);
-    padding-bottom: 0.5em
-  }
-
-  #image-credits-page .image-credit p + p {
-    margin-top: var(--micro-padding-small);
-  }
-
-</style>
 {{ end }}

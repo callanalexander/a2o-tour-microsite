@@ -2,11 +2,6 @@
 locale: en-US
 title: Ecoacoustic Tour of Australia
 theme: "microsite-template"
-menus:
-  main:
-    - name: Image Credits
-      pageRef: /image-credits/
-      weight: 10
 server:
   headers:
     - for: /**
@@ -42,13 +37,13 @@ params:
       - image: "images/footer/Google_2026_logo.svg"
         alt: "Google"
         url: "https://about.google/"
-      - image: "images/footer/JCU.webp"
+      - image: "images/footer/jcu_logo.svg"
         alt: "James Cook University"
         url: "https://www.jcu.edu.au/"
-      - image: "images/footer/QUT_RGB.png"
+      - image: "images/footer/qut_logo.svg"
         alt: "Queensland University of Technology"
         url: "https://www.qut.edu.au/"
-      - image: "images/footer/BirdLife_Australia_logo.jpg"
+      - image: "images/footer/bird_life_logo.svg"
         alt: "BirdLife Australia"
         url: "https://birdlife.org.au/"
   tasks:
@@ -167,19 +162,7 @@ params:
               - 335
               - 336
   map:
-    min_zoom: 1
-    max_zoom: 21
-    fit_initial_bounds: false
-    initial_center:
-      latitude: -27.5
-      longitude: 150
-    initial_zoom: 4
-    strict_bounds: false
-    bounds:
-      north: -5
-      south: -50
-      east: -140
-      west: 65
+    min_zoom: 3
     sites:
       - campaign: "Daintree Rainforest Observatory"
         latitude: -16.103236
@@ -194,7 +177,7 @@ params:
 
               image: "images/species/Buff-breasted-Paradise-Kingfisher.jpg"
               examples:
-                - url: "https://api.acousticobservatory.org/audio_recordings/491051/media.mp3"
+                - url: "https://api.acousticobservatory.org/audio_recordings/491051/media.mp3?end_offset=1590&start_offset=1560"
             - name: "Wompoo Fruit Dove"
               description: "A large fruit dove that feeds quietly in the canopy. Known for its 'Wompoo!' call."
               image: "images/species/Wompoo-Fruit-Dove.jpg"
@@ -213,7 +196,7 @@ params:
             - name: "Southern Cassowary"
               description: "A tall, flightless rainforest bird that disperses fallen fruit and produces low, resonant mating calls."
               examples:
-                - url: "https://api.acousticobservatory.org/audio_recordings/487381/media.mp3"
+                - url: "https://api.acousticobservatory.org/audio_recordings/487381/media.mp3?end_offset=5820&start_offset=5790"
             - name: "Bar-shouldered Dove"
               description: "A long-tailed dove that feeds on the ground near water and gives a rhythmic, cooing call."
             - name: "Sulphur-crested Cockatoo"

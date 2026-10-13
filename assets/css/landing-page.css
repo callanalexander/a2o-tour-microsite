@@ -1,0 +1,211 @@
+html:has(#home-page) {
+	scroll-behavior: smooth;
+}
+
+#home-page {
+	display: grid;
+	grid-template-columns: subgrid;
+	grid-column: fullbleed;
+
+	& > .oe-hero {
+		position: relative;
+		display: grid;
+		grid-template-columns: subgrid;
+		grid-column: fullbleed;
+		aspect-ratio: auto;
+		min-height: 35rem;
+		align-items: center;
+		padding: var(--section-padding) 0;
+		background-position: left center;
+
+		.hero-content-container {
+			z-index: 1;
+
+			.hero-content {
+				display: grid;
+				grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+				align-items: center;
+				gap: var(--space-medium);
+				width: 100%;
+				max-width: var(--content-width);
+				margin: 0 auto;
+
+				& > * {
+					grid-column: 1;
+					max-width: 100%;
+					text-shadow: 0 0 0.5rem var(--color-shadow-text);
+				}
+
+				@media (max-width: 64em) {
+					grid-template-columns: minmax(0, 1fr);
+				}
+			}
+		}
+
+		.oe-hero-title {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			margin: 0;
+			color: var(--color-surface-alt);
+			font-family: var(--font-heading);
+			font-size: var(--font-size-display);
+			font-weight: 400;
+			line-height: 1.12;
+
+			@media (max-width: 48em) {
+				font-size: var(--font-size-xlarge);
+			}
+		}
+
+		.home-hero-eyebrow {
+			color: var(--color-accent);
+			font-family: var(--font-accent);
+			font-size: var(--font-size-large);
+			font-style: italic;
+			font-weight: 500;
+			line-height: 2rem;
+		}
+
+		.slotted-hero-content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--space-xlarge);
+			color: var(--color-on-dark);
+
+			p {
+				margin: 0;
+				font-size: var(--font-size-medium);
+				line-height: 1.5rem;
+			}
+		}
+
+		sl-button {
+			text-shadow: none;
+			--sl-color-primary-600: var(--color-accent);
+			--sl-color-primary-500: var(--color-accent);
+			--sl-color-neutral-0: var(--color-on-accent);
+		}
+
+		@media (max-width: 64em) {
+			--hero-bird-height: 26rem;
+
+			padding-bottom: var(--hero-bird-height);
+			background-color: var(--color-hero-fade);
+			background-repeat: no-repeat;
+			background-size: auto var(--hero-bird-height);
+			background-position: left calc(50vw - 1.831 * var(--hero-bird-height)) bottom;
+
+			&::before {
+				position: absolute;
+				right: 0;
+				bottom: calc(var(--hero-bird-height) - 5rem);
+				left: 0;
+				height: 5rem;
+				background: linear-gradient(to bottom, var(--color-hero-fade), transparent);
+				pointer-events: none;
+				content: "";
+			}
+		}
+	}
+
+	& > .home-map-section {
+		grid-column: fullbleed;
+		padding: var(--section-padding) 0;
+		background: var(--color-surface-muted);
+	}
+}
+
+.home-map-section {
+	h2 {
+		margin-bottom: var(--space-xsmall);
+		line-height: 2.75rem;
+		color: var(--color-text-strong);
+		font-family: var(--font-accent);
+		font-style: italic;
+		font-weight: 500;
+		text-align: center;
+	}
+
+	& > .page-section-content > p {
+		margin-bottom: var(--space-xlarge);
+		color: var(--color-text);
+		font-size: var(--font-size-medium);
+		line-height: 1.5rem;
+		text-align: center;
+	}
+
+	.map {
+		max-width: var(--content-width);
+		margin: 0 auto;
+		padding: var(--space-medium);
+		border-radius: var(--radius-map-frame);
+		background: var(--color-surface);
+
+		@media (max-width: 36em) {
+			max-width: none;
+			width: 100vw;
+			margin-inline: calc(50% - 50vw);
+			padding: 0;
+			border-radius: 0;
+		}
+	}
+}
+
+.map {
+	--map-min-height: 39rem;
+	--map-min-height-mobile: 20rem;
+	color: var(--color-map-ink);
+
+	.map-shell {
+		border: 0;
+	}
+
+	.map-leader-line {
+		stroke: var(--color-white);
+	}
+
+	.map-callout {
+		width: 19rem;
+		max-width: 100%;
+		border-radius: var(--radius-callout);
+		box-shadow: 0 0.5rem 1.5rem var(--color-shadow);
+	}
+
+	.map-onboarding-callout {
+		display: none;
+	}
+
+	.map-callout-close {
+		top: var(--space-large);
+		right: var(--space-large);
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+		color: var(--color-white);
+		background: var(--color-overlay);
+		font-size: 18px;
+		line-height: 1;
+
+		&:hover,
+		&:focus-visible {
+			background: var(--color-overlay-strong);
+		}
+	}
+}
+
+.map-marker-button {
+	box-shadow: 0 0.2rem 0.6rem var(--color-shadow-marker);
+
+	&:hover .map-marker-dot,
+	&:focus-visible .map-marker-dot,
+	&.is-selected .map-marker-dot {
+		background: var(--color-map-marker-active);
+		transform: scale(1.45);
+	}
+}
+
+.map-marker-dot {
+	transition: transform 150ms ease, background-color 150ms ease;
+}

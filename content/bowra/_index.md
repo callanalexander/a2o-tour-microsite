@@ -10,7 +10,7 @@ Listen for the species that become active after rain and at night.
 """
 +++
 
-## Why Your Contributions Matter
+## Why Your Contributions <em>Matter</em>
 
 Bowra Station captures the pulse of inland Queensland, where rainfall and water availability can reshape wildlife activity. Your verifications help document both the familiar daytime chorus and the less visible nocturnal species that use this open country.
 
