@@ -10,7 +10,7 @@ Listen for woodland birds by day and Tawny Frogmouths at night.
 """
 +++
 
-## Why Your Contributions Matter
+## Why Your Contributions <em>Matter</em>
 
 Binya's woodlands support declining woodland birds, including the Painted Honeyeater, which follows fruiting mistletoe across the landscape. Your verifications help reveal when these species are present and how often they call.
 

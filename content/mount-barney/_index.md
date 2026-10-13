@@ -10,7 +10,7 @@ Recordings from the site reveal how these habitats change across the landscape.
 """
 +++
 
-## Why Your Contributions Matter
+## Why Your Contributions <em>Matter</em>
 
 Mount Barney brings together woodland, wet forest, and mountain habitats in a relatively small area. Your verifications help reveal which species are active in each part of the landscape and how their calls change across seasons and weather conditions.
 

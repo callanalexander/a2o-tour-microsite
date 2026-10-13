@@ -1,0 +1,26 @@
+{{ `{{< sponsors class="site-sponsors" />}}` | .RenderString }}
+
+<section class="site-information-initiative fullbleed">
+  <h2>This site is a part of Call Detective initiative</h2>
+  <sl-button href="https://calldetective.org/" variant="primary" pill>Visit Call Detective Website</sl-button>
+</section>
+
+<div class="oe-footer">
+  <div class="oe-footer-row">
+    <p>Copyright {{ now.Year }}. All rights reserved.</p>
+  </div>
+
+  <div class="oe-footer-row">
+    <p><a href="{{ "image-credits/" | relURL }}">Image Credits</a></p>
+  </div>
+
+  <div class="oe-footer-row">
+    <div>
+      <p>
+        A
+        <a class="inline-link" href="https://calldetective.org/">Call Detective</a>
+        project.
+      </p>
+    </div>
+  </div>
+</div>
