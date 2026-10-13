@@ -28,23 +28,10 @@
     <div class="site-information-why-inner">
         <div class="site-information-why-content">
             {{ $.Content }}
-            <dl class="site-information-stats">
-                {{/*  <div>
-                    <dt>Verifications completed</dt>
-                    <dd>{{ $progress.user_tasks }}/{{ $progress.total_tasks }}</dd>
-                </div>
-                <div>
-                    <dt>Total community verification</dt>
-                    <dd>{{ lang.FormatNumber 0 $progress.total_verifications }}</dd>
-                </div>  */}}
-
-                {{ partial "progress-counter.html" (dict
-                    "campaign" .campaign
-                    "verifyURL" $verifyURL
-                ) }}
-
-
-            </dl>
+            {{ partial "progress-counter.html" (dict
+                "campaign" .campaign
+                "verifyURL" $verifyURL
+            ) }}
         </div>
         <div class="site-information-map">
             {{ with $outline }}
