@@ -22,7 +22,7 @@
             {{ end }}
             <figcaption>
               <h2>{{ $credit.title }}</h2>
-              {{ with $credit.author }}<p><strong>By:</strong> {{ . }}</p>{{ end }}
+              {{ with $credit.author }}<p>&copy; {{ . }}</p>{{ end }}
               {{ with $credit.source }}
                 {{ $sourceURL := urls.Parse . }}
                 <p><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $sourceURL.Host }}</a></p>
