@@ -356,19 +356,17 @@ body {
 	h2 {
 		font-size: var(--font-size-large);
 		line-height: 2rem;
-	}
 
-	sl-button {
-		margin-top: var(--space-medium);
-		--sl-color-primary-600: var(--color-text);
-		--sl-color-primary-500: var(--color-text);
-		--sl-color-neutral-0: var(--color-on-dark);
+		a {
+			color: inherit;
+			text-decoration: underline;
+			text-underline-offset: 0.12em;
+		}
 	}
 }
 
 .oe-hero sl-button,
 .site-information-hero sl-button,
-.site-information-initiative sl-button,
 .site-info-link {
 	&::part(base) {
 		align-items: center;

@@ -190,4 +190,8 @@
 	.site-info-link {
 		margin-top: var(--space-xsmall);
 	}
+
+	.site-info-spectrogram-view {
+		height: 5rem;
+	}
 }

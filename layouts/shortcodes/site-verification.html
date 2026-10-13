@@ -3,7 +3,12 @@
     {{- errorf "site-verification requires a campaign parameter or campaign front matter" -}}
 {{- end -}}
 {{- $id := printf "verification-grid-%s" ($campaign | urlize) -}}
+{{- $sitePage := .Page.Parent -}}
 
+<a class="page-back" href="{{ $sitePage.RelPermalink }}">
+    <sl-icon name="arrow-left" aria-hidden="true"></sl-icon>
+    <span>Back to {{ $sitePage.Title }}</span>
+</a>
 <oe-verification-grid data-campaign="{{ $campaign }}" id="{{ $id }}" grid-size="1" loading-timeout="60">
     <oe-verification verified="true" shortcut="y">Yes</oe-verification>
     <oe-verification verified="false" shortcut="n">No</oe-verification>

@@ -73,6 +73,11 @@
         <p>Here’s a set of available projects you can contribute to with your verifications.</p>
         <div class="cards-grid">
             {{ range .content.species }}
+                {{ $audio := "" }}
+                {{ range first 1 (.examples | default slice) }}
+                    {{ $audio = .url }}
+                {{ end }}
+                {{ $spectrogramID := printf "site-species-%s-%s" ($.Params.site_name | urlize) (.name | urlize) }}
                 {{ $speciesImage := "" }}
                 {{ $speciesImageAlt := .name }}
                 {{ with .image }}
@@ -96,6 +101,31 @@
                         </div>
                         <div class="site-info-content">
                             <p class="site-info-text">{{ .description }}</p>
+                            {{ with $audio }}
+                                <div class="site-info-spectrogram">
+                                    <oe-spectrogram
+                                        id="{{ $spectrogramID }}"
+                                        class="site-info-spectrogram-view"
+                                        src="{{ . }}"
+                                        scaling="stretch"
+                                        color-map="grayscale"
+                                        window-size="512"
+                                        window-function="hamming"
+                                    ></oe-spectrogram>
+                                    <div class="site-info-spectrogram-player">
+                                        <oe-media-controls for="{{ $spectrogramID }}">
+                                            <span slot="play-icon" class="site-info-spectrogram-action">
+                                                <sl-icon name="play-circle-fill" aria-hidden="true"></sl-icon>
+                                                Play
+                                            </span>
+                                            <span slot="pause-icon" class="site-info-spectrogram-action">
+                                                <sl-icon name="pause-circle-fill" aria-hidden="true"></sl-icon>
+                                                Pause
+                                            </span>
+                                        </oe-media-controls>
+                                    </div>
+                                </div>
+                            {{ end }}
                         </div>
                     </div>
                 </article>

@@ -75,13 +75,17 @@
 #verify-page::before {
 	content: "";
 	position: absolute;
-	top: 5.5rem;
-	bottom: var(--section-padding);
-	left: 50%;
-	width: min(78rem, calc(90% - 2rem));
-	transform: translateX(-50%);
-	background: var(--color-overlay);
+	inset: 0;
+	background: var(--color-overlay-strong);
 	pointer-events: none;
+}
+
+#verify-page .page-back {
+	position: static;
+	grid-column: main;
+	margin-bottom: var(--space-small);
+	color: var(--color-surface);
+	font-size: var(--font-size-medium);
 }
 
 #verify-page > * {
@@ -90,7 +94,7 @@
 }
 
 #verify-page oe-verification-grid {
-	--oe-background-color: transparent !important;
+	--oe-background-color: var(--color-surface) !important;
 }
 
 #verify-page oe-verification-grid[grid-size="1"] {
