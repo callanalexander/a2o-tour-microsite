@@ -26,7 +26,7 @@
             </div>
             <div class="site-info-content">
               <p class="site-info-text">
-                {{ with $credit.author }}<span><strong>By:</strong> {{ . }}</span>{{ end }}
+                {{ with $credit.author }}<span>&copy; {{ . }}</span>{{ end }}
                 {{ with $credit.source }}
                   {{ $sourceURL := urls.Parse . }}
                   <span><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "www." $sourceURL.Host }}</a></span>
