@@ -1,7 +1,14 @@
 {{ `{{< sponsors class="site-sponsors" />}}` | .RenderString }}
 
+{{ if .IsHome }}
+  {{ with resources.Get "js/species-audio.js" | fingerprint }}
+<script src="{{ .RelPermalink }}" type="module"></script>
+  {{ end }}
+{{ end }}
+
 <section class="site-information-initiative fullbleed">
   <h2>This site is a part of the <a href="https://calldetective.org/">Call Detective</a> initiative</h2>
+  {{ partial "auth-menu.html" . }}
 </section>
 
 <div class="oe-footer">

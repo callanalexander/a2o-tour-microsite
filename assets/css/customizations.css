@@ -104,3 +104,18 @@
 #verify-page oe-verification-grid[grid-size="1"] {
 	height: 40rem;
 }
+
+#login-page #login-form sl-button {
+	--sl-color-primary-600: var(--color-text);
+	--sl-color-primary-500: var(--color-text);
+	--sl-color-neutral-0: var(--color-on-dark);
+}
+
+{{ with resources.Get site.Params.login_background_image }}
+body:has(#login-page) {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('{{ .RelPermalink }}') !important;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+{{ end }}

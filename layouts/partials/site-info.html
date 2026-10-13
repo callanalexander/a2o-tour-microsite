@@ -25,12 +25,6 @@
 {{- $clip := index $clips 0 | default dict -}}
 {{- $audio := $clip.url -}}
 {{- $audioLabel := $clip.name -}}
-{{- if and (gt (len $clips) 1) (not (page.Store.Get "speciesAudioLoaded")) -}}
-    {{- page.Store.Set "speciesAudioLoaded" true -}}
-    {{- with resources.Get "js/species-audio.js" -}}
-        <script src="{{ (. | fingerprint).RelPermalink }}" defer></script>
-    {{- end -}}
-{{- end -}}
 {{- $spectrogramID := printf "%s-%s" .spectrogramPrefix ($site.campaign | urlize) -}}
 {{- $image := "" -}}
 {{- with $site.content.image -}}
@@ -52,7 +46,7 @@
             <oe-spectrogram
                 id="{{ $spectrogramID }}"
                 class="site-info-spectrogram-view"
-                src="{{ $audio }}"
+                data-src="{{ $audio }}"
                 scaling="stretch"
                 color-map="grayscale"
                 window-size="512"
@@ -70,10 +64,13 @@
                     </span>
                 </oe-media-controls>
                 {{ with $audioLabel }}
-                <span class="site-info-spectrogram-label">
-                    <span>{{ . }}</span>
+                <span class="site-info-spectrogram-label" data-clips="{{ $clips | jsonify }}" data-index="0">
+                    <span class="site-info-species-name">{{ . }}</span>
                     {{ if gt (len $clips) 1 }}
-                    <button class="site-info-species-next" type="button" aria-label="Play next species" data-clips="{{ $clips | jsonify }}">
+                    <button class="site-info-species-control" type="button" aria-label="Play previous species" data-direction="-1">
+                        <sl-icon name="chevron-left" aria-hidden="true"></sl-icon>
+                    </button>
+                    <button class="site-info-species-control" type="button" aria-label="Play next species" data-direction="1">
                         <sl-icon name="chevron-right" aria-hidden="true"></sl-icon>
                     </button>
                     {{ end }}
