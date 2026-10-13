@@ -32,6 +32,10 @@ params:
   api_host: https://api.acousticobservatory.org
   workbench_host: https://data.acousticobservatory.org
   hero_image: images/riflebird_banner.jpg
+  referrers:
+    calldetective:
+      url: https://calldetective.org/
+      name: Call Detective
   sponsors:
     logos:
       - image: "images/footer/Google_2026_logo.svg"

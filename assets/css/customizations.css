@@ -94,7 +94,8 @@
 }
 
 #verify-page oe-verification-grid {
-	--oe-background-color: var(--color-surface) !important;
+	--oe-background-color: transparent !important;
+	--oe-panel-color: var(--color-surface) !important;
 }
 
 #verify-page oe-verification-grid[grid-size="1"] {
