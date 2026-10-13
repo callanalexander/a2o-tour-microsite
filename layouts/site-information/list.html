@@ -59,7 +59,7 @@
 <div class="cards-grid site-information-cards" aria-label="Progress and species of interest">
     <section class="site-progress-card">
         {{ partial "progress-counter.html" (dict
-            "counterID" (printf "progress-counter-%s" ($.Params.site_name | urlize))
+            "campaign" .campaign
             "verifyURL" $verifyURL
         ) }}
     </section>

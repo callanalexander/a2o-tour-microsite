@@ -4,7 +4,6 @@
 @import "./map-customizations.css";
 @import "./hero-customizations.css";
 @import "./species.css";
-@import "./progress-counter.css";
 
 body:has(#verify-page) {
 	grid-template-rows:

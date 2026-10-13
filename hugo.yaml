@@ -53,30 +53,25 @@ params:
         url: "https://birdlife.org.au/"
   tasks:
     verification: false
-  progress_mock:
-    user_tasks: 3
-    total_tasks: 10
-    total_verifications: 12480
-    leaderboard:
-      - name: "Alice Smith"
-        is_current: false
-      - name: "Bob Jones"
-        is_current: false
-      - name: "Charlie Brown"
-        is_current: false
-      - name: "You"
-        is_current: true
   campaigns:
     - name: "Daintree Rainforest Observatory"
-      tags:
-        - "Buff-breasted Paradise-Kingfisher"
-        - "Wompoo Fruit Dove"
-        - "Spotted Catbird"
-        - "Victoria's Riflebird"
-        - "Southern Cassowary"
-        - "Bar-shouldered Dove"
-        - "Sulphur-crested Cockatoo"
-        - "Fan-tailed Cuckoo"
+      tag_ids:
+        # Buff-breasted Paradise-Kingfisher
+        - 27015
+        # Wompoo Fruit Dove
+        - 27145
+        # Spotted Catbird
+        - 27126
+        # Victoria's Riflebird
+        - 27220
+        # Southern Cassowary
+        - 27110
+        # Bar-shouldered Dove
+        - 45
+        # Sulphur-crested Cockatoo
+        - 23
+        # Fan-tailed Cuckoo
+        - 55
       filters:
         filter:
           sites.id:
@@ -86,15 +81,21 @@ params:
               - 199
               - 200
     - name: "Bowra Station"
-      tags:
-        - "Pink Cockatoo"
-        - "Budgerigar"
-        - "Crested Bellbird"
-        - "Spotted Nightjar"
-        - "Cockatiel"
-        - "Brown Treecreeper"
-        - "Crucifix Frog"
-        - "Red Tree Frog"
+      tag_ids:
+        # Pink Cockatoo
+        - 156
+        # Budgerigar
+        - 242
+        # Crested Bellbird
+        - 164
+        # Spotted Nightjar
+        - 144
+        # Cockatiel
+        - 205
+        # Brown Treecreeper
+        - 191
+        # No current API tag ID: Crucifix Frog
+        # No current API tag ID: Red Tree Frog
       filters:
         filter:
           sites.id:
@@ -104,15 +105,22 @@ params:
               - 259
               - 260
     - name: "Mount Barney"
-      tags:
-        - "Glossy-black Cockatoo"
-        - "Koala"
-        - "Spotted Quail-thrush"
-        - "Scarlet Myzomela"
-        - "White-throated Nightjar"
-        - "Sugar Glider"
-        - "Southern Boobook"
-        - "Grey Shrike-thrush"
+      tag_ids:
+        # Glossy-black Cockatoo
+        - 26969
+        # Koala
+        - 109
+        # Spotted Quail-thrush
+        - 26812
+        # Scarlet Myzomela
+        - 26632
+        # White-throated Nightjar
+        - 135
+        # No current API tag ID: Sugar Glider
+        # Southern Boobook
+        - 107
+        # Grey Shrike-thrush
+        - 16
       filters:
         filter:
           sites.id:
@@ -122,12 +130,16 @@ params:
               - 3
               - 4
     - name: "Monjebup Reserve"
-      tags:
-        - "Western Whipbird"
-        - "Malleefowl"
-        - "Weebill"
-        - "Stubble Quail"
-        - "Carnaby's Black-Cockatoo"
+      tag_ids:
+        # Western Whipbird
+        - 27089
+        # No current API tag ID: Malleefowl
+        # Weebill
+        - 181
+        # Stubble Quail
+        - 26810
+        # Carnaby's Black-Cockatoo
+        - 27112
       filters:
         filter:
           sites.id:
@@ -137,12 +149,16 @@ params:
               - 363
               - 364
     - name: "Marshmead"
-      tags:
-        - "Yellow-bellied Glider"
-        - "Bell Miner"
-        - "Superb Lyrebird"
-        - "Wonga Pigeon"
-        - "Yellow-tailed Black-Cockatoo"
+      tag_ids:
+        # No current API tag ID: Yellow-bellied Glider
+        # Bell Miner
+        - 26758
+        # Superb Lyrebird
+        - 132
+        # Wonga Pigeon
+        - 27052
+        # Yellow-tailed Black-Cockatoo
+        - 76
       filters:
         filter:
           sites.id:
@@ -152,12 +168,17 @@ params:
               - 311
               - 312
     - name: "Binya"
-      tags:
-        - "Painted Honeyeater"
-        - "Horsfield's Bronze-cuckoo"
-        - "Red-capped Robin"
-        - "Striped Honeyeater"
-        - "Tawny Frogmouth"
+      tag_ids:
+        # Painted Honeyeater
+        - 27331
+        # Horsfield's Bronze-cuckoo
+        - 211
+        # Red-capped Robin
+        - 168
+        # Striped Honeyeater
+        - 60
+        # Tawny Frogmouth
+        - 136
       filters:
         filter:
           sites.id:
