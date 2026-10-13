@@ -1,20 +1,64 @@
-/* Banner font options: leave one import and one font-family active at a time. */
-
-@import url('https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import "./map-customizations.css";
-@import "./hero-customizations.css";
-@import "./species.css";
+/* Same families as calldetective.org: Google Sans for headings, Google Sans Text for body and buttons. */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Google+Sans+Text:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;1,500&display=swap');
+@import "./cards.css";
+@import "./landing-page.css";
 @import "./progress-counter.css";
+@import "./site-information.css";
 
-body:has(#verify-page) {
-	grid-template-rows:
-		[header-start]
-		0
-		[header-end main-start]
-		minmax(4rem, auto)
-		[main-end footer-start]
-		4rem
-		[footer-end];
+:root {
+	--color-surface: #f7f4e5;
+	--color-surface-alt: #e0e0d4;
+	--color-surface-muted: #d3d4b5;
+	--color-card: #f8f2eb;
+	--color-text-strong: #163525;
+	--color-text: #304f3b;
+	--color-accent: #de9843;
+	--color-on-dark: #d3d4b5;
+	--color-on-accent: #000;
+	--color-white: #fff;
+	--color-hero-fade: #224119;
+	--color-map-ink: #243238;
+	--color-map-marker: #c7623d;
+	--color-map-marker-active: #f2b66f;
+	--color-map-coast: #a2c2a5;
+	--color-map-land: rgba(99, 126, 101, 0.9);
+
+	--color-overlay: rgba(0, 0, 0, 0.5);
+	--color-overlay-strong: rgba(0, 0, 0, 0.75);
+	--color-overlay-dark: rgba(23, 29, 26, 0.9);
+
+
+	--color-shadow: rgba(0, 0, 0, 0.25);
+	--color-shadow-text: rgba(0, 0, 0, 0.8);
+	--color-shadow-marker: rgba(0, 0, 0, 0.38);
+
+	--font-heading: "Google Sans", sans-serif;
+	--font-body: "Google Sans Text", sans-serif;
+	--font-accent: "Playfair Display", serif;
+
+	--font-size-xsmall: 12px;
+	--font-size-small: 14px;
+	--font-size-medium: 16px;
+	--font-size-large: 24px;
+	--font-size-xlarge: 36px;
+	--font-size-xxlarge: 48px;
+	--font-size-display: 58px;
+
+	--radius-card: 1rem;
+	--radius-callout: 0.75rem;
+	--radius-map-frame: 1rem;
+
+	--space-xxsmall: 0.25rem;
+	--space-xsmall: 0.5rem;
+	--space-small: 0.75rem;
+	--space-medium: 1rem;
+	--space-large: 1.5rem;
+	--space-xlarge: 2rem;
+
+	--section-padding: 4rem;
+
+	--content-width: 66rem;
+	--card-width: 21rem;
 }
 
 #verify-page {
@@ -22,7 +66,7 @@ body:has(#verify-page) {
 	grid-template-columns: subgrid;
 	grid-column: fullbleed;
 	position: relative;
-	padding-top: var(--micro-navbar-height);
+	padding-top: var(--space-xlarge);
 	background-position: top center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -31,12 +75,12 @@ body:has(#verify-page) {
 #verify-page::before {
 	content: "";
 	position: absolute;
-	top: 8rem;
-	bottom: 4rem;
+	top: 5.5rem;
+	bottom: var(--section-padding);
 	left: 50%;
 	width: min(78rem, calc(90% - 2rem));
 	transform: translateX(-50%);
-	background: rgba(0, 0, 0, 0.5);
+	background: var(--color-overlay);
 	pointer-events: none;
 }
 
@@ -50,217 +94,5 @@ body:has(#verify-page) {
 }
 
 #verify-page oe-verification-grid[grid-size="1"] {
-	height: clamp(30rem, 72vh, 42rem);
-	max-height: 42rem;
-}
-
-.site-information-hero {
-	min-height: clamp(20rem, 38vw, 31rem);
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.site-information-hero-inner {
-	grid-column: main;
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-	align-items: stretch;
-	width: 100%;
-	min-height: inherit;
-	margin: 0 auto;
-}
-
-.site-information-hero-map {
-	display: grid;
-	place-items: center;
-	padding: var(--micro-padding-medium);
-}
-
-
-.site-information-map-canvas {
-	--site-map-land-color: rgba(99, 126, 101, 0.7);
-	--site-map-coast-color: #a2c2a5;
-	--site-map-coast-width: 8;
-	position: relative;
-	width: 100%;
-	aspect-ratio: 1140 / 920;
-}
-
-.site-information-map-outline,
-.site-information-map-outline > svg,
-.site-information-map-marker-svg {
-	display: block;
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.site-information-map-outline {
-	filter: drop-shadow(0 0 18px rgba(0, 0, 0, 1));
-}
-
-.site-information-map-outline .australia-map-land {
-	fill: var(--site-map-land-color);
-	stroke: var(--site-map-coast-color);
-	stroke-width: var(--site-map-coast-width);
-}
-
-.site-information-map-marker-svg {
-	display: block;
-}
-
-.site-information-map-marker {
-	fill: #c7623d;
-	stroke: white;
-	stroke-width: 3;
-	opacity: 1;
-	vector-effect: non-scaling-stroke;
-}
-
-.site-information-map-ring {
-	fill: none;
-	stroke: white;
-	stroke-width: 3;
-	vector-effect: non-scaling-stroke;
-}
-
-.site-information-map-ring:nth-of-type(2) {
-	opacity: 0.8;
-}
-
-.site-information-map-ring:nth-of-type(1) {
-	opacity: 0.6;
-}
-
-.site-information-hero-panel {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-self: center;
-	margin: var(--micro-padding-medium) 0;
-	padding: var(--micro-padding-medium);
-	background: rgba(13, 24, 28, 0.78);
-	color: white;
-}
-
-.site-information-hero-panel h1 {
-	margin: 0 0 var(--micro-padding-medium);
-	color: white;
-}
-
-.site-information-hero-description p {
-	margin: 0;
-}
-
-.site-information-hero-verify {
-	align-self: flex-start;
-	margin-top: var(--micro-padding-medium);
-}
-
-
-.site-information-cards {
-	grid-column: main;
-	width: 100%;
-	margin: 0 auto;
-	padding: var(--micro-padding-large) 0;
-}
-
-.site-progress-card {
-	display: flex;
-	flex-direction: column;
-}
-
-.site-progress-card .project-progress-widget,
-.site-progress-card sl-card {
-	width: 100%;
-}
-
-.site-progress-card sl-button[href="/verify"] {
-	display: none;
-}
-
-.site-information-verify-link {
-	display: block;
-	margin-top: var(--micro-padding-small);
-	padding: var(--micro-padding-small) var(--micro-padding-medium);
-	color: white;
-	background: var(--sl-color-primary-600);
-	text-align: center;
-	text-decoration: none;
-}
-
-.site-information-verify-link:hover,
-.site-information-verify-link:focus-visible {
-	background: var(--sl-color-primary-700);
-}
-
-.content-card {
-	min-width: 0;
-	border: 1px solid var(--map-border);
-	background: rgba(255, 255, 255, 0.98);
-	box-shadow: 0 0.5rem 1.5rem rgba(36, 50, 56, 0.16);
-}
-
-.site-species-card {
-	overflow: hidden;
-}
-
-.site-species-image {
-	display: block;
-	width: 100%;
-	aspect-ratio: 3 / 1.6;
-	object-fit: cover;
-}
-
-.site-species-card-content {
-	display: flex;
-	flex-direction: column;
-	gap: var(--micro-padding-small);
-	padding: var(--micro-padding-medium);
-}
-
-.site-species-card h2 {
-	margin: 0;
-	font-size: var(--micro-font-size-medium);
-}
-
-.site-species-card p {
-	margin: 0;
-}
-
-.site-species-spectrogram {
-	margin-top: var(--micro-padding-small);
-}
-
-.site-information-no-example {
-	color: var(--map-muted);
-	font-style: italic;
-}
-
-.site-information-markdown {
-	grid-column: main;
-	width: 100%;
-	margin: 0 auto;
-	padding: 0 0 var(--micro-padding-large);
-}
-
-@media (max-width: 48em) {
-	.site-information-hero-inner {
-		grid-template-columns: 1fr;
-		width: 100%;
-	}
-
-	.site-information-hero-map {
-		padding: var(--micro-padding-large) 0;
-	}
-
-	.site-information-hero-panel {
-		margin: 0 0 var(--micro-padding-large);
-	}
-
-	.site-information-markdown {
-		width: 100%;
-	}
+	height: 40rem;
 }

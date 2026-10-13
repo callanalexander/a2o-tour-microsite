@@ -9,10 +9,38 @@
 {{- end -}}
 
 {{ with $site }}
-{{- $verifyURL := printf "%sverify/" $.RelPermalink -}}
-<section class="oe-hero page-section fullbleed site-information-hero" data-site="{{ $.Params.site_name | urlize }}"{{ with $banner }} style="background-image: url('{{ . }}');"{{ end }}>
-    <div class="site-information-hero-inner">
-        <div class="site-information-hero-map">
+{{- $verifyURL := printf "%sverify/" .page -}}
+{{- $progress := site.Params.progress_mock | default dict -}}
+{{- $heroDescription := index (split (trim $.Params.banner_description "\n") "\n\n") 0 -}}
+<section class="site-information-hero fullbleed" data-site="{{ $.Params.site_name | urlize }}"{{ with $banner }} style="background-image: url('{{ . }}');"{{ end }}>
+    <a class="page-back" href="/">
+        <sl-icon name="arrow-left" aria-hidden="true"></sl-icon>
+        <span>Ecoacoustic Tour of Australia</span>
+    </a>
+    <div class="site-information-hero-content">
+        <p class="site-information-eyebrow">{{ site.Title }}</p>
+        <h1>{{ .campaign }}</h1>
+        <div class="site-information-hero-description">{{ $heroDescription | markdownify }}</div>
+        <sl-button href="{{ $verifyURL }}" variant="primary" pill>Verify Calls</sl-button>
+    </div>
+</section>
+
+<section class="site-information-why fullbleed">
+    <div class="site-information-why-inner">
+        <div class="site-information-why-content">
+            {{ $.Content }}
+            <dl class="site-information-stats">
+                <div>
+                    <dt>Verifications completed</dt>
+                    <dd>{{ $progress.user_tasks }}/{{ $progress.total_tasks }}</dd>
+                </div>
+                <div>
+                    <dt>Total community verification</dt>
+                    <dd>{{ lang.FormatNumber 0 $progress.total_verifications }}</dd>
+                </div>
+            </dl>
+        </div>
+        <div class="site-information-map">
             {{ with $outline }}
                 {{ $width := 1000.0 }}
                 {{ $height := 780.0 }}
@@ -43,70 +71,45 @@
                 </div>
             {{ end }}
         </div>
-        <div class="site-information-hero-panel">
-            <h1>{{ .campaign }}</h1>
-            <div class="site-information-hero-description">
-            {{ $.Params.banner_description | markdownify }}
-            </div>
-            <sl-button class="site-information-hero-verify" href="{{ $verifyURL }}" variant="primary" pill>
-                Verify calls from {{ .campaign }}
-                <sl-icon slot="suffix" name="arrow-right" aria-hidden="true"></sl-icon>
-            </sl-button>
+    </div>
+</section>
+
+<section class="site-information-projects fullbleed">
+    <div class="site-information-projects-inner">
+        <h2>Contribute Your Verifications</h2>
+        <p>Here’s a set of available projects you can contribute to with your verifications.</p>
+        <div class="cards-grid">
+            {{ range .content.species }}
+                {{ $speciesImage := "" }}
+                {{ $speciesImageAlt := .name }}
+                {{ with .image }}
+                    {{ with resources.Get . }}
+                        {{ $speciesImage = (.Fill "600x400 center").RelPermalink }}
+                    {{ end }}
+                {{ end }}
+                {{ if not $speciesImage }}
+                    {{ with $site.content.image }}
+                        {{ with resources.Get . }}
+                            {{ $speciesImage = (.Fill "600x400 center").RelPermalink }}
+                            {{ $speciesImageAlt = printf "%s habitat" $site.campaign }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+                <article class="site-card">
+                    <div class="site-info">
+                        <div class="site-info-visual">
+                            {{ with $speciesImage }}<img class="site-info-image" src="{{ . }}" alt="{{ $speciesImageAlt }}" loading="lazy">{{ end }}
+                            <h3 class="site-info-title">{{ .name }}</h3>
+                        </div>
+                        <div class="site-info-content">
+                            <p class="site-info-text">{{ .description }}</p>
+                        </div>
+                    </div>
+                </article>
+            {{ end }}
         </div>
     </div>
 </section>
 
-<div class="cards-grid site-information-cards" aria-label="Progress and species of interest">
-    <section class="site-progress-card">
-        {{ partial "progress-counter.html" (dict
-            "counterID" (printf "progress-counter-%s" ($.Params.site_name | urlize))
-            "verifyURL" $verifyURL
-        ) }}
-    </section>
-
-    {{ range $index, $species := .content.species }}
-        {{ $speciesImage := "" }}
-        {{ $speciesImageAlt := $species.name }}
-        {{ with $species.image }}
-            {{ with resources.Get . }}
-                {{ $speciesImage = (.Fill "600x320 center").RelPermalink }}
-            {{ end }}
-        {{ end }}
-        {{ if not $speciesImage }}
-            {{ with $site.content.image }}
-                {{ with resources.Get . }}
-                    {{ $speciesImage = (.Fill "600x320 center").RelPermalink }}
-                    {{ $speciesImageAlt = printf "%s habitat" $site.campaign }}
-                {{ end }}
-            {{ end }}
-        {{ end }}
-        <article class="content-card site-species-card">
-            {{ with $speciesImage }}<img class="site-species-image" src="{{ . }}" alt="{{ $speciesImageAlt }}" loading="lazy">{{ end }}
-            <div class="site-species-card-content">
-                <h2>{{ $species.name }}</h2>
-                <p>{{ $species.description }}</p>
-                {{ with $species.examples }}
-                    {{ with index . 0 }}
-                        {{ $spectrogramID := printf "site-%s-species-%d" ($.Params.site_name | urlize) $index }}
-                        <div class="oe-spectrogram site-species-spectrogram">
-                            <oe-axes>
-                                <oe-indicator>
-                                    <oe-spectrogram id="{{ $spectrogramID }}" src="{{ .url }}"></oe-spectrogram>
-                                </oe-indicator>
-                            </oe-axes>
-                            <oe-media-controls for="{{ $spectrogramID }}"></oe-media-controls>
-                        </div>
-                    {{ end }}
-                {{ else }}
-                    <p class="site-information-no-example">Example call coming soon.</p>
-                {{ end }}
-            </div>
-        </article>
-    {{ end }}
-</div>
-
-<article class="site-information-markdown">
-    {{ $.Content }}
-</article>
 {{ end }}
 {{ end }}

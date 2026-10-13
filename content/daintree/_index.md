@@ -12,7 +12,7 @@ Pellentesque imperdiet justo a ultrices molestie. Sed tincidunt sapien lacus, el
 """
 +++
 
-## Why Your Contributions Matter
+## Why Your Contributions <em>Matter</em>
 
 The Daintree Rainforest Observatory records a layered tropical soundscape where many species are easier to detect by sound than by sight. Your verifications help distinguish calls across the canopy and forest floor, building a clearer picture of rainforest activity through changing seasons.
 

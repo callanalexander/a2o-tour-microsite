@@ -11,98 +11,77 @@
     behavior; this partial does not create or run JavaScript.
 */}}
 {{- $site := .site -}}
-{{- $image := "" -}}
-{{- with $site -}}
-    {{- with .content.image -}}
-        {{- with resources.Get . -}}
-            {{- $image = (.Fill "600x200 center").RelPermalink -}}
+{{- $clips := slice -}}
+{{- with $site.audio -}}
+    {{- $clips = slice (dict "name" "" "url" .) -}}
+{{- else -}}
+    {{- range $site.content.species -}}
+        {{- $species := . -}}
+        {{- range first 1 ($species.examples | default slice) -}}
+            {{- $clips = $clips | append (dict "name" $species.name "url" .url) -}}
         {{- end -}}
     {{- end -}}
 {{- end -}}
-{{- $paintMasks := slice
-    "/images/paint/paint1.png"
-    "/images/paint/paint1-h.png"
-    "/images/paint/paint1-v.png"
-    "/images/paint/paint1-r180.png"
-    "/images/paint/paint2.png"
-    "/images/paint/paint2-h.png"
-    "/images/paint/paint2-v.png"
-    "/images/paint/paint2-r180.png"
-    "/images/paint/paint3.png"
-    "/images/paint/paint3-h.png"
-    "/images/paint/paint3-v.png"
-    "/images/paint/paint3-r180.png"
-    "/images/paint/paint4.png"
-    "/images/paint/paint4-h.png"
-    "/images/paint/paint4-v.png"
-    "/images/paint/paint4-r180.png"
-    "/images/paint/paint5.png"
-    "/images/paint/paint5-h.png"
-    "/images/paint/paint5-v.png"
-    "/images/paint/paint5-r180.png"
--}}
-{{- $maskOrder := collections.Shuffle $paintMasks -}}
+{{- $clip := index $clips 0 | default dict -}}
+{{- $audio := $clip.url -}}
+{{- $audioLabel := $clip.name -}}
+{{- if and (gt (len $clips) 1) (not (page.Store.Get "speciesAudioLoaded")) -}}
+    {{- page.Store.Set "speciesAudioLoaded" true -}}
+    {{- with resources.Get "js/species-audio.js" -}}
+        <script src="{{ (. | fingerprint).RelPermalink }}" defer></script>
+    {{- end -}}
+{{- end -}}
+{{- $spectrogramID := printf "%s-%s" .spectrogramPrefix ($site.campaign | urlize) -}}
+{{- $image := "" -}}
+{{- with $site.content.image -}}
+    {{- with resources.Get . -}}
+        {{- $image = (.Fill "600x200 center").RelPermalink -}}
+    {{- end -}}
+{{- end -}}
 
 <div class="site-info">
     <div class="site-info-visual">
-        <img
-            class="site-info-image"
-            {{ with $image }}src="{{ . }}"{{ end }}
-            alt="{{ with $site }}{{ .campaign }} field site{{ end }}"
-        />
-        <h3 class="site-info-title">{{ with $site }}{{ .campaign }}{{ end }}</h3>
+        {{ with $image }}<img class="site-info-image" src="{{ . }}" alt="{{ $site.campaign }} field site">{{ end }}
+        <h3 class="site-info-title">{{ $site.campaign }}</h3>
     </div>
 
     <div class="site-info-content">
-        <p class="site-info-text">{{ with $site }}{{ .description }}{{ end }}</p>
-        <sl-button
-            class="site-info-link"
-            {{ with $site }}href="{{ .page }}"{{ end }}
-            variant="primary"
-            pill
-        >Learn more and contribute
-            <sl-icon slot="suffix" name="arrow-right" aria-hidden="true"></sl-icon>
-        </sl-button>
-        <div class="site-info-species-frame">
-        <ul class="site-info-species">
-            {{ with $site }}
-            {{ range $index, $species := first 5 .content.species }}
-                {{ $speciesImage := "" }}
-                {{ with $species.image }}
-                    {{ with resources.Get . }}
-                        {{ $speciesImage = (.Fill "460x330 center").RelPermalink }}
+        <p class="site-info-text">{{ $site.description }}</p>
+        {{ if $audio }}
+        <div class="site-info-spectrogram">
+            <oe-spectrogram
+                id="{{ $spectrogramID }}"
+                class="site-info-spectrogram-view"
+                src="{{ $audio }}"
+                scaling="stretch"
+                color-map="grayscale"
+                window-size="512"
+                window-function="hamming"
+            ></oe-spectrogram>
+            <div class="site-info-spectrogram-player">
+                <oe-media-controls for="{{ $spectrogramID }}">
+                    <span slot="play-icon" class="site-info-spectrogram-action">
+                        <sl-icon name="play-circle-fill" aria-hidden="true"></sl-icon>
+                        Play
+                    </span>
+                    <span slot="pause-icon" class="site-info-spectrogram-action">
+                        <sl-icon name="pause-circle-fill" aria-hidden="true"></sl-icon>
+                        Pause
+                    </span>
+                </oe-media-controls>
+                {{ with $audioLabel }}
+                <span class="site-info-spectrogram-label">
+                    <span>{{ . }}</span>
+                    {{ if gt (len $clips) 1 }}
+                    <button class="site-info-species-next" type="button" aria-label="Play next species" data-clips="{{ $clips | jsonify }}">
+                        <sl-icon name="chevron-right" aria-hidden="true"></sl-icon>
+                    </button>
                     {{ end }}
+                </span>
                 {{ end }}
-                <li
-                    class="species-item"
-                    data-acc-name="{{ $species.name }}"
-                    style="--species-mask-image: url('{{ index $maskOrder (mod $index (len $maskOrder)) }}');{{ with $speciesImage }} --species-thumbnail: url('{{ . }}');{{ end }}"
-                >
-                    <span class="species-item-image{{ if not $speciesImage }} species-item-image--missing{{ end }}">
-                        {{ with $speciesImage }}
-                            <img src="{{ . }}" alt="{{ $species.name }}" loading="lazy" />
-                        {{ end }}
-                    </span>
-                    <span class="species-item-body">
-                        <span class="species-item-name">{{ $species.name }}</span>
-                        {{ with $species.examples }}
-                            {{ with index . 0 }}
-                                <a
-                                    class="species-item-play"
-                                    href="{{ .url }}"
-                                    data-audio-url="{{ .url }}"
-                                    role="button"
-                                    aria-label="Play {{ $species.name }} example call"
-                                    title="Play {{ $species.name }} example call"
-                                ><sl-icon name="volume-up" aria-hidden="true"></sl-icon></a>
-                            {{ end }}
-                        {{ end }}
-                    </span>
-                </li>
-            {{ end }}
-            {{ end }}
-        </ul>
+            </div>
         </div>
+        {{ end }}
+        <sl-button class="site-info-link" href="{{ $site.page }}" variant="primary" size="small" pill>Learn More</sl-button>
     </div>
-    <audio class="site-info-audio" preload="none" crossorigin="anonymous"></audio>
 </div>
