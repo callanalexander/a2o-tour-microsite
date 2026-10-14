@@ -33,7 +33,7 @@ params:
   workbench_host: https://data.acousticobservatory.org
   workbench_name: Australian Acoustic Observatory
   hero_image: images/riflebird_banner.jpg
-  login_background_image: images/sites/daintree/daintree.jpg
+  login_background_image: images/riflebird_banner.jpg
   referrers:
     calldetective:
       url: https://calldetective.org/
@@ -433,19 +433,21 @@ params:
     mediumBreakPoint: 1024px
     largeBreakPoint: 1200px
     roundedButtons: true
+    # A2O theme color: #304f3b
     themeColor:
-      hue: 30deg
-      saturation: 62%
-      lightness: 49%
+      hue: 141.29deg
+      saturation: 24.41%
+      lightness: 24.90%
+    # Keep 600 as the unaltered theme color; tint lighter steps and shade darker steps.
     themeShades:
-      "50": rgb(252 249 245)
-      "100": rgb(247 234 222)
-      "200": rgb(240 219 196)
-      "300": rgb(233 201 168)
-      "400": rgb(224 177 130)
-      "500": rgb(211 146 80)
-      "600": rgb(186 115 44)
-      "700": rgb(153 95 36)
-      "800": rgb(126 78 30)
-      "900": rgb(90 56 21)
-      "950": rgb(55 34 13)
+      "50": color-mix(in srgb, var(--sl-color-primary-600) 3%, white)
+      "100": color-mix(in srgb, var(--sl-color-primary-600) 8%, white)
+      "200": color-mix(in srgb, var(--sl-color-primary-600) 18%, white)
+      "300": color-mix(in srgb, var(--sl-color-primary-600) 35%, white)
+      "400": color-mix(in srgb, var(--sl-color-primary-600) 55%, white)
+      "500": color-mix(in srgb, var(--sl-color-primary-600) 78%, white)
+      "600": "#304f3b"
+      "700": color-mix(in srgb, var(--sl-color-primary-600) 85%, black)
+      "800": color-mix(in srgb, var(--sl-color-primary-600) 70%, black)
+      "900": color-mix(in srgb, var(--sl-color-primary-600) 55%, black)
+      "950": color-mix(in srgb, var(--sl-color-primary-600) 35%, black)
