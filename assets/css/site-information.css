@@ -352,6 +352,21 @@ body {
     }
 }
 
+#extra-footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-medium);
+    margin: 0;
+    padding: var(--space-medium) var(--micro-gutter-size) var(--space-xlarge);
+    background: var(--color-surface-alt);
+
+    .oe-footer-row {
+        margin: 0;
+        padding: 0;
+    }
+}
+
 .oe-hero sl-button,
 .site-information-hero sl-button,
 .site-info-link {
