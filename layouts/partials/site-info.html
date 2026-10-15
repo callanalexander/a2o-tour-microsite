@@ -29,7 +29,7 @@
 {{- $image := "" -}}
 {{- with $site.content.image -}}
     {{- with resources.Get . -}}
-        {{- $image = (.Fill "600x200 center").RelPermalink -}}
+        {{- $image = (.Fill "600x200 center webp").RelPermalink -}}
     {{- end -}}
 {{- end -}}
 
@@ -51,6 +51,8 @@
                 color-map="grayscale"
                 window-size="512"
                 window-function="hamming"
+                brightness="0.05"
+                contrast="2.05"
             ></oe-spectrogram>
             <div class="site-info-spectrogram-player">
                 <oe-media-controls for="{{ $spectrogramID }}">

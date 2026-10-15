@@ -291,6 +291,7 @@ params:
                 - url: "https://api.acousticobservatory.org/audio_recordings/511298/media.mp3?end_offset=5095&start_offset=5075"
             - name: "Sugar Glider"
               description: "A small nocturnal glider that sails between trees on furry membranes, feeds on sap and nectar, and gives yapping calls."
+              image: "images/species/sugar-glider.jpg"
               examples:
                 - url: "https://api.acousticobservatory.org/audio_recordings/1873028/media.mp3?end_offset=4675&start_offset=4655"
             - name: "Southern Boobook"
@@ -393,6 +394,7 @@ params:
                 - url: "https://api.acousticobservatory.org/audio_recordings/1214877/media.mp3?end_offset=5485&start_offset=5465"
             - name: "Yellow-bellied Glider"
               description: "A nocturnal glider of tall eucalypt forest that feeds on sap and nectar and is known for its loud, gurgling shrieks."
+              image: "images/species/Yellow-bellied-Glider.jpg"
               examples:
                 - url: "https://api.acousticobservatory.org/audio_recordings/1209740/media.mp3?end_offset=7165&start_offset=7145"
       - campaign: "Binya"

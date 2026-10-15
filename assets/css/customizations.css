@@ -128,3 +128,9 @@ body > main {
 #verify-page oe-verification-grid[grid-size="1"] {
     height: 40rem;
 }
+
+.acknowledgement-of-country {
+    max-width: 71rem;
+    text-align: center;
+    margin-top: var(--space-medium);
+}

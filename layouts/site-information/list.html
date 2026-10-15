@@ -4,7 +4,7 @@
 {{- $banner := "" -}}
 {{- with $site.content.image -}}
     {{- with resources.Get . -}}
-        {{- $banner = (.Fill "1600x500 center").RelPermalink -}}
+        {{- $banner = (.Fill "1600x500 center webp").RelPermalink -}}
     {{- end -}}
 {{- end -}}
 
@@ -82,13 +82,13 @@
                 {{ $speciesImageAlt := .name }}
                 {{ with .image }}
                     {{ with resources.Get . }}
-                        {{ $speciesImage = (.Fill "600x400 center").RelPermalink }}
+                        {{ $speciesImage = (.Fill "600x400 center webp").RelPermalink }}
                     {{ end }}
                 {{ end }}
                 {{ if not $speciesImage }}
                     {{ with $site.content.image }}
                         {{ with resources.Get . }}
-                            {{ $speciesImage = (.Fill "600x400 center").RelPermalink }}
+                            {{ $speciesImage = (.Fill "600x400 center webp").RelPermalink }}
                             {{ $speciesImageAlt = printf "%s habitat" $site.campaign }}
                         {{ end }}
                     {{ end }}

@@ -20,7 +20,7 @@
           <div class="site-info">
             <div class="site-info-visual">
               {{ with $image }}
-                <img class="site-info-image" src="{{ (.Resize "600x").RelPermalink }}" alt="{{ $credit.title }}" style="object-position: {{ $credit.h | default "50%" }} center;" loading="lazy">
+                <img class="site-info-image" src="{{ (.Resize "600x webp").RelPermalink }}" alt="{{ $credit.title }}" style="object-position: {{ $credit.h | default "50%" }} center;" loading="lazy">
               {{ end }}
               <h2 class="site-info-title">{{ $credit.title }}</h2>
             </div>
