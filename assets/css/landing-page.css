@@ -16,7 +16,7 @@ html:has(#home-page) {
         min-height: 35rem;
         align-items: center;
         padding: var(--section-padding) 0;
-        background-position: 65% center;
+        background-position: 65% 25%;
 
         .hero-content-container {
             z-index: 1;
@@ -33,7 +33,7 @@ html:has(#home-page) {
                 & > * {
                     grid-column: 1;
                     max-width: 100%;
-                    text-shadow: 0 0 0.5rem var(--color-shadow-text);
+                    text-shadow: 0 0 6.0rem var(--color-shadow-text), 0 0 4.0rem var(--color-shadow-text), 0 0 1.0rem var(--color-shadow-text);
                 }
 
                 @media (max-width: 44em) {

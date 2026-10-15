@@ -34,7 +34,7 @@ params:
   workbench_name: Australian Acoustic Observatory
   #hero_image: images/riflebird_banner.jpg
   hero_image: images/singing_honeyeater_banner.jpg
-  login_background_image: images/riflebird_banner.jpg
+  login_background_image: images/singing_honeyeater_banner.jpg
   referrers:
     calldetective:
       url: https://calldetective.org/

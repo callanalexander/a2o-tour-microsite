@@ -14,6 +14,7 @@
     --color-text: #304f3b;
     --color-accent: #de9843;
     --color-on-dark: #d3d4b5;
+    --color-on-dark: #eaebcc;
     --color-on-accent: #000;
     --color-white: #fff;
     /* --color-hero-fade: #224119; riflebird */
@@ -29,7 +30,7 @@
     --color-overlay-dark: rgba(23, 29, 26, 0.9);
 
     --color-shadow: rgba(0, 0, 0, 0.25);
-    --color-shadow-text: rgba(0, 0, 0, 0.8);
+    --color-shadow-text: rgba(0, 0, 0, 0.6);
     --color-shadow-marker: rgba(0, 0, 0, 0.38);
 
     --font-heading: "Google Sans", sans-serif;
