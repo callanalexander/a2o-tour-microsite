@@ -1,6 +1,14 @@
 ---
 title: Image Credits
 credits:
+
+  - title: Singing Honeyeater
+    author: Hayley Alexander
+    source: https://www.birdlifephotography.org.au/
+    license: All rights reserved
+    image: images/singing_honeyeater_banner.jpg
+    h: 80%
+
   # Daintree Rainforest Observatory
   - title: Buff-breasted Paradise-Kingfisher
     author: Rob Solic

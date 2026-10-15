@@ -32,7 +32,8 @@ params:
   api_host: https://api.acousticobservatory.org
   workbench_host: https://data.acousticobservatory.org
   workbench_name: Australian Acoustic Observatory
-  hero_image: images/riflebird_banner.jpg
+  #hero_image: images/riflebird_banner.jpg
+  hero_image: images/singing_honeyeater_banner.jpg
   login_background_image: images/riflebird_banner.jpg
   referrers:
     calldetective:

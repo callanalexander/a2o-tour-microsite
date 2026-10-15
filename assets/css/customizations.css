@@ -16,7 +16,8 @@
     --color-on-dark: #d3d4b5;
     --color-on-accent: #000;
     --color-white: #fff;
-    --color-hero-fade: #224119;
+    /* --color-hero-fade: #224119; riflebird */
+	--color-hero-fade: #443e33;
     --color-map-ink: #243238;
     --color-map-marker: #c7623d;
     --color-map-marker-active: #f2b66f;

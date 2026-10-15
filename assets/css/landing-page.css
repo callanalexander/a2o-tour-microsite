@@ -16,7 +16,7 @@ html:has(#home-page) {
         min-height: 35rem;
         align-items: center;
         padding: var(--section-padding) 0;
-        background-position: left center;
+        background-position: 65% center;
 
         .hero-content-container {
             z-index: 1;
@@ -36,7 +36,7 @@ html:has(#home-page) {
                     text-shadow: 0 0 0.5rem var(--color-shadow-text);
                 }
 
-                @media (max-width: 64em) {
+                @media (max-width: 44em) {
                     grid-template-columns: minmax(0, 1fr);
                 }
             }
@@ -88,15 +88,14 @@ html:has(#home-page) {
             --sl-color-neutral-0: var(--color-on-accent);
         }
 
-        @media (max-width: 64em) {
+        @media (max-width: 44em) {
             --hero-bird-height: 26rem;
 
             padding-bottom: var(--hero-bird-height);
             background-color: var(--color-hero-fade);
             background-repeat: no-repeat;
             background-size: auto var(--hero-bird-height);
-            background-position: left
-                calc(50vw - 1.831 * var(--hero-bird-height)) bottom;
+            background-position: 80% bottom;
 
             &::before {
                 position: absolute;
@@ -109,6 +108,7 @@ html:has(#home-page) {
                     var(--color-hero-fade),
                     transparent
                 );
+
                 pointer-events: none;
                 content: "";
             }
