@@ -28,10 +28,6 @@
     <div class="site-information-why-inner">
         <div class="site-information-why-content">
             {{ $.Content }}
-            {{ partial "progress-counter.html" (dict
-                "campaign" .campaign
-                "verifyURL" $verifyURL
-            ) }}
         </div>
         <div class="site-information-map">
             {{ with $outline }}
@@ -63,6 +59,12 @@
                     </svg>
                 </div>
             {{ end }}
+        </div>
+        <div class="site-information-why-progress">
+            {{ partial "site-information-progress-counter.html" (dict
+                "campaign" .campaign
+                "verifyURL" $verifyURL
+            ) }}
         </div>
     </div>
 </section>
@@ -111,6 +113,8 @@
                                         color-map="grayscale"
                                         window-size="512"
                                         window-function="hamming"
+                                        brightness="0.05"
+                                        contrast="1.05"
                                     ></oe-spectrogram>
                                     <div class="site-info-spectrogram-player">
                                         <oe-media-controls for="{{ $spectrogramID }}">
