@@ -41,7 +41,7 @@
 	--sl-color-primary-500: var(--color-text);
 	--sl-color-neutral-0: var(--color-on-dark);
 	align-self: flex-end;
-	margin: var(--space-xsmall) 0;
+	margin: var(--space-xsmall) 0 0;
 }
 
 #home-page > .site-cards,
@@ -130,7 +130,7 @@
 			line-height: 1rem;
 			text-align: right;
 
-			.site-info-species-next {
+			.site-info-species-control {
 				display: inline-flex;
 				padding: 0;
 				border: 0;
@@ -189,5 +189,9 @@
 
 	.site-info-link {
 		margin-top: var(--space-xsmall);
+	}
+
+	.site-info-spectrogram-view {
+		height: 5rem;
 	}
 }

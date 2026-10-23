@@ -1,6 +1,14 @@
 ---
 title: Image Credits
 credits:
+
+  - title: Singing Honeyeater
+    author: Hayley Alexander
+    source: https://www.birdlifephotography.org.au/
+    license: All rights reserved
+    image: images/singing_honeyeater_banner.jpg
+    h: 80%
+
   # Daintree Rainforest Observatory
   - title: Buff-breasted Paradise-Kingfisher
     author: Rob Solic
@@ -59,6 +67,11 @@ credits:
     source: https://www.birdlifephotography.org.au/
     license: All rights reserved
     image: images/species/Grey-Shrike-thrush.jpg
+  - title: Sugar-Glider
+    author: Lana Waller
+    source: https://www.inaturalist.org/photos/347547183
+    license: CC-BY
+    image: images/species/sugar-glider.jpg
 
   # Bowra Station
   - title: Pink Cockatoo
@@ -135,6 +148,10 @@ credits:
     source: https://www.birdlifephotography.org.au/
     license: All rights reserved
     image: images/species/Yellow-tailed-Black-Cockatoo.jpg
+  - title: Yellow-bellied Glider
+    author: David White
+    source: https://www.inaturalist.org/photos/60158566
+    image: images/species/yellow-bellied-glider.jpeg
 
   # Binya
   - title: Painted Honeyeater

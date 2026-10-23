@@ -1,0 +1,21 @@
+{{ `{{< sponsors class="site-sponsors" />}}` | .RenderString }}
+
+
+{{ if .IsHome }}
+  {{ with resources.Get "js/species-audio.js" | fingerprint }}
+<script src="{{ .RelPermalink }}" type="module"></script>
+  {{ end }}
+{{ end }}
+
+<section class="site-information-initiative fullbleed">
+  <h2>This site is a part of the <a href="https://calldetective.org/">Call Detective</a> initiative</h2>
+</section>
+<section id="extra-footer-content">
+  <div class="oe-footer-row">
+    <sl-button href="{{ "image-credits/" | relURL }}" variant="default"{{ if site.Params.Style.RoundedButtons }} pill{{ end }}>Image Credits</sl-button>
+  </div>
+
+  <div class="oe-footer-row">
+    {{ partial "auth-menu.html" . }}
+  </div>
+</section>

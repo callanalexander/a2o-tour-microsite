@@ -1,98 +1,200 @@
 /* Same families as calldetective.org: Google Sans for headings, Google Sans Text for body and buttons. */
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Google+Sans+Text:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Google+Sans+Text:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;1,500&display=swap");
 @import "./cards.css";
 @import "./landing-page.css";
-@import "./progress-counter.css";
+@import "./progress-counter-overrides.css";
 @import "./site-information.css";
 
 :root {
-	--color-surface: #f7f4e5;
-	--color-surface-alt: #e0e0d4;
-	--color-surface-muted: #d3d4b5;
-	--color-card: #f8f2eb;
-	--color-text-strong: #163525;
-	--color-text: #304f3b;
-	--color-accent: #de9843;
-	--color-on-dark: #d3d4b5;
-	--color-on-accent: #000;
-	--color-white: #fff;
-	--color-hero-fade: #224119;
-	--color-map-ink: #243238;
-	--color-map-marker: #c7623d;
-	--color-map-marker-active: #f2b66f;
-	--color-map-coast: #a2c2a5;
-	--color-map-land: rgba(99, 126, 101, 0.9);
+    --color-surface: #f7f4e5;
+    --color-surface-alt: #e0e0d4;
+    --color-surface-muted: #d3d4b5;
+    --color-card: #f8f2eb;
+    --color-text-strong: #163525;
+    --color-text: #304f3b;
+    --color-accent: #de9843;
+    --color-on-dark: #d3d4b5;
+    --color-on-dark: #eaebcc;
+    --color-on-accent: #000;
+    --color-white: #fff;
+    /* --color-hero-fade: #224119; riflebird */
+	--color-hero-fade: #443e33;
+    --color-map-ink: #243238;
+    --color-map-marker: #c7623d;
+    --color-map-marker-active: #f2b66f;
+    --color-map-coast: rgba(99, 126, 101, 0.1);
+    --color-map-land: rgba(99, 126, 101, 0.7);
 
-	--color-overlay: rgba(0, 0, 0, 0.5);
-	--color-overlay-strong: rgba(0, 0, 0, 0.75);
-	--color-overlay-dark: rgba(23, 29, 26, 0.9);
+    --color-overlay: rgba(0, 0, 0, 0.5);
+    --color-overlay-strong: rgba(0, 0, 0, 0.75);
+    --color-overlay-dark: rgba(23, 29, 26, 0.9);
 
+    --color-shadow: rgba(0, 0, 0, 0.25);
+    --color-shadow-text: rgba(0, 0, 0, 0.6);
+    --color-shadow-marker: rgba(0, 0, 0, 0.38);
 
-	--color-shadow: rgba(0, 0, 0, 0.25);
-	--color-shadow-text: rgba(0, 0, 0, 0.8);
-	--color-shadow-marker: rgba(0, 0, 0, 0.38);
+    --font-heading: "Google Sans", sans-serif;
+    --font-body: "Google Sans Text", sans-serif;
+    --font-accent: "Playfair Display", serif;
 
-	--font-heading: "Google Sans", sans-serif;
-	--font-body: "Google Sans Text", sans-serif;
-	--font-accent: "Playfair Display", serif;
+    --font-size-xsmall: 12px;
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 24px;
+    --font-size-xlarge: 36px;
+    --font-size-xxlarge: 48px;
+    --font-size-display: 58px;
 
-	--font-size-xsmall: 12px;
-	--font-size-small: 14px;
-	--font-size-medium: 16px;
-	--font-size-large: 24px;
-	--font-size-xlarge: 36px;
-	--font-size-xxlarge: 48px;
-	--font-size-display: 58px;
+    --radius-card: 1rem;
+    --radius-callout: 0.75rem;
+    --radius-map-frame: 1rem;
 
-	--radius-card: 1rem;
-	--radius-callout: 0.75rem;
-	--radius-map-frame: 1rem;
+    --space-xxsmall: 0.25rem;
+    --space-xsmall: 0.5rem;
+    --space-small: 0.75rem;
+    --space-medium: 1rem;
+    --space-large: 1.5rem;
+    --space-xlarge: 2rem;
 
-	--space-xxsmall: 0.25rem;
-	--space-xsmall: 0.5rem;
-	--space-small: 0.75rem;
-	--space-medium: 1rem;
-	--space-large: 1.5rem;
-	--space-xlarge: 2rem;
+    --section-padding: 4rem;
 
-	--section-padding: 4rem;
+    --content-width: 66rem;
+    --card-width: 21rem;
 
-	--content-width: 66rem;
-	--card-width: 21rem;
+    /* Add a darkening overlay for the login page background */
+    --micro-login-overlay: linear-gradient(
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.6)
+    );
+    --micro-login-position: 58% 50%;
+}
+
+/* Hide default header */
+& > header {
+    display: none;
+}
+
+/* stretch main over the space where the default header usually would be */
+body > main {
+    grid-row: header-start / main-end;
+}
+
+/* centre align because the default header is hidden and it floats to the top in an ugly way otherwise */
+#login-page .login-container {
+    align-self: center;
+    margin-top: 0;
 }
 
 #verify-page {
-	display: grid;
-	grid-template-columns: subgrid;
-	grid-column: fullbleed;
-	position: relative;
-	padding-top: var(--space-xlarge);
-	background-position: top center;
-	background-size: cover;
-	background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: fullbleed;
+    position: relative;
+    padding-top: var(--space-xlarge);
+    padding-bottom: var(--section-padding);
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #verify-page::before {
-	content: "";
-	position: absolute;
-	top: 5.5rem;
-	bottom: var(--section-padding);
-	left: 50%;
-	width: min(78rem, calc(90% - 2rem));
-	transform: translateX(-50%);
-	background: var(--color-overlay);
-	pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-overlay-strong);
+    pointer-events: none;
+}
+
+#verify-page .page-back {
+    position: static;
+    grid-column: main;
+    margin-bottom: var(--space-small);
+    color: var(--color-surface);
+    font-size: var(--font-size-medium);
 }
 
 #verify-page > * {
-	position: relative;
-	z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 #verify-page oe-verification-grid {
-	--oe-background-color: transparent !important;
+    --oe-background-color: var(--color-surface) !important;
+    --oe-panel-color: var(--color-surface) !important;
+    border-radius: var(--radius-callout);
+    background-color: var(--color-surface);
 }
 
 #verify-page oe-verification-grid[grid-size="1"] {
-	height: 40rem;
+    height: 40rem;
+}
+
+.acknowledgement-of-country {
+    max-width: 71rem;
+    text-align: center;
+    margin-top: var(--space-medium);
+}
+
+
+
+body {
+    --micro-heading-font: var(--font-heading);
+    --micro-body-font: var(--font-body);
+    --micro-footer-font-color: var(--color-text);
+
+    & > footer {
+        display: grid;
+        grid-template-columns: subgrid;
+        align-content: start;
+        background: var(--color-surface-alt);
+
+        & > * {
+            grid-column: fullbleed;
+        }
+    }
+
+    .oe-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0 var(--space-xsmall);
+        justify-self: center;
+        width: min(calc(100% - 2rem), var(--content-width));
+        padding: var(--space-medium) 0 var(--space-xlarge);
+        border-top: 1px solid rgb(from var(--color-text) r g b / 25%);
+        background: transparent;
+
+        @media (max-width: 48em) {
+            padding-bottom: 3rem;
+        }
+
+        .oe-footer-row {
+            margin: 0;
+            padding: 0;
+
+            &:nth-child(3) {
+                display: none;
+            }
+
+            &:nth-child(2)::before {
+                margin-right: var(--space-xsmall);
+                content: "·";
+            }
+
+            li,
+            p {
+                margin: 0;
+            }
+
+            a {
+                text-decoration: underline;
+                text-underline-offset: 0.15em;
+
+                &:hover {
+                    color: var(--color-text-strong);
+                }
+            }
+        }
+    }
 }

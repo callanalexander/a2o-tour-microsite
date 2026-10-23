@@ -4,7 +4,7 @@
   {{- range where site.Params.map.sites "campaign" .Params.campaign -}}
     {{- with .content.image -}}
       {{- with resources.Get . -}}
-        background-image: url('{{ (.Fill "1600x500 center").RelPermalink }}');
+        background-image: url('{{ (.Fill "1600x500 center webp").RelPermalink }}');
         background-position: center top;
         background-size: cover;
         background-repeat: no-repeat;
