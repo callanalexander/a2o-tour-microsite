@@ -1,8 +1,7 @@
-+++
-title = "Verify Monjebup Reserve calls"
-layout = "verify"
-type = "verify"
-campaign = "Monjebup Reserve"
-+++
+---
+title: Verify Monjebup Reserve calls
+layout: verify
+type: verify
+---
 
 {{< site-verification >}}

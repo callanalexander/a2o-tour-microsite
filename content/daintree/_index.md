@@ -1,16 +1,48 @@
-+++
-title = "Daintree Rainforest"
-type = "site-information"
-site_name = "Daintree Rainforest"
-aliases = ["/site-information/daintree/"]
-banner_description = """
-The Daintree Rainforest Observatory captures sound from one of Australia's richest tropical ecosystems.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod in eros ac molestie. Integer pretium molestie urna, suscipit aliquam risus fermentum vitae. Proin dignissim tristique elementum. Morbi tempus sapien ut risus dapibus consequat.
-
-Pellentesque imperdiet justo a ultrices molestie. Sed tincidunt sapien lacus, elementum rhoncus justo iaculis sit amet. Sed auctor efficitur nisi quis vehicula. In justo justo, semper convallis erat sit amet, porttitor ultrices augue. Pellentesque rhoncus feugiat tincidunt. Pellentesque euismod blandit augue a pulvinar. Aliquam id turpis arcu. Nam orci nibh, imperdiet non urna nec, scelerisque feugiat orci. Nullam in ultrices dolor.
-"""
-+++
+---
+title: Daintree Rainforest
+type: site-information
+campaign: Daintree Rainforest
+image: images/sites/daintree/daintree.jpg
+banner_description: |-
+  The Daintree Rainforest Observatory captures sound from one of Australia's richest tropical ecosystems.
+species:
+  - name: "Victoria's Riflebird"
+    description: "Iconic rainforest bird-of-paradise. Voice is not as showy as its plumage."
+    tag_ids: [27219]
+    image: images/species/Victorias-Riflebird.jpg
+    examples:
+      - url: "https://api.acousticobservatory.org/audio_recordings/492310/media.mp3?end_offset=2665&start_offset=2645"
+  - name: "Buff-breasted Paradise-Kingfisher"
+    description: "A bright, long-tailed kingfisher that breeds in North Queensland rainforests and migrates to New Guinea for the winter."
+    tag_ids: [27014]
+    image: images/species/Buff-breasted-Paradise-Kingfisher.jpg
+    examples:
+      - url: "https://api.acousticobservatory.org/audio_recordings/491051/media.mp3?end_offset=1585&start_offset=1565"
+  - name: "Wompoo Fruit Dove"
+    description: "A large fruit dove that feeds quietly in the canopy. Known for its 'Wompoo!' call."
+    tag_ids: [27144]
+    image: images/species/Wompoo-Fruit-Dove.jpg
+    examples:
+      - url: "https://api.acousticobservatory.org/audio_recordings/492563/media.mp3?end_offset=5875&start_offset=5855"
+  - name: "Orange-footed Scrubfowl"
+    description: "A dark, chicken-sized mound-builder that incubates its eggs in huge heaps of soil and leaf litter and gives loud, gurgling cackles, often at night."
+    tag_ids: [27107]
+    image: images/species/Orange-footed-Scrubfowl.jpg
+    examples:
+      - url: "https://api.acousticobservatory.org/audio_recordings/488324/media.mp3?end_offset=2815&start_offset=2795"
+  - name: "Spotted Catbird"
+    description: "A large rainforest species with highly unusual cat-like calls."
+    tag_ids: [27125]
+    image: images/species/Spotted-Catbird.jpg
+    examples:
+      - url: "https://api.acousticobservatory.org/audio_recordings/490212/media.mp3?end_offset=565&start_offset=545"
+  - name: "Sulphur-crested Cockatoo"
+    description: "A large white cockatoo with a yellow crest that gathers in noisy flocks and gives harsh, far-carrying screeches."
+    tag_ids: [26681]
+    image: images/species/Sulphur-crested-Cockatoo.jpg
+    examples:
+      - url: "https://api.acousticobservatory.org/audio_recordings/1877393/media.mp3?end_offset=5515&start_offset=5495"
+---
 
 ## Why Your Contributions <em>Matter</em>
 

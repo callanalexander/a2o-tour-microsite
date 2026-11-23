@@ -1,8 +1,7 @@
-+++
-title = "Verify Binya calls"
-layout = "verify"
-type = "verify"
-campaign = "Binya"
-+++
+---
+title: Verify Binya calls
+layout: verify
+type: verify
+---
 
 {{< site-verification >}}
