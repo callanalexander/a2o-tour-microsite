@@ -46,6 +46,8 @@ species:
 
 ## Why Your Contributions <em>Matter</em>
 
-The Daintree Rainforest Observatory records a layered tropical soundscape where many species are easier to detect by sound than by sight. Your verifications help distinguish calls across the canopy and forest floor, building a clearer picture of rainforest activity through changing seasons.
+Located on Eastern Kuku Yalanji Country, the Daintree Rainforest Observatory records a layered tropical soundscape where many species are easier to detect by sound than by sight. Your verifications help distinguish calls across the canopy and forest floor, building a clearer picture of rainforest activity through changing seasons.
 
 These observations add to long-term acoustic records that can complement field surveys and help researchers understand how this rainforest community responds to environmental change.
+
+<!--more-->
