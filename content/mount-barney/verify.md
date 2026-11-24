@@ -1,8 +1,7 @@
-+++
-title = "Verify Mount Barney calls"
-layout = "verify"
-type = "verify"
-campaign = "Mount Barney"
-+++
+---
+title: Verify Mount Barney calls
+layout: verify
+type: verify
+---
 
 {{< site-verification >}}

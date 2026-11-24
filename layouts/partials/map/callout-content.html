@@ -1,21 +1,26 @@
+{{- $markerPage := .markerPage -}}
+{{- $datasources := partialCached "map/datasources.html" $markerPage $markerPage.Path -}}
+{{- $locationPage := index $datasources "location" -}}
+{{- $callout := $markerPage.Params.callout | default dict -}}
+{{- $spectrogramPrefix := "map-callout-spectrogram" -}}
+{{- if eq .view "card" -}}
+    {{- $spectrogramPrefix = "location-card-spectrogram" -}}
+{{- end -}}
+
 {{/*
-    Shared inner site-information content for map callouts and site cards.
+    Shared A2O location content for map callouts and cards.
 
-    The outer map-callout or site-card wrapper is supplied by the caller.
-    This partial deliberately has no mode flag and no wrapper-specific controls.
-    It always renders the same site image, title, description, link, species
-    list, species images, audio hooks, and names from the supplied site object.
-
-    Parent CSS uses the caller's outer class to choose between the map carousel
-    layout and the site-card list layout. Parent JavaScript controls map-only
-    behavior; this partial does not create or run JavaScript.
+    The theme supplies the outer wrapper. The marker provides the description;
+    its callout image and link can override the location datasource. A callout
+    audio URL replaces the datasource's species examples.
+    Otherwise, the location datasource provides the image, link, and species examples.
 */}}
-{{- $site := .site -}}
 {{- $clips := slice -}}
-{{- with $site.audio -}}
+{{- with $callout.audio -}}
     {{- $clips = slice (dict "name" "" "url" .) -}}
 {{- else -}}
-    {{- range $site.content.species -}}
+    {{- $species := $locationPage.Params.species | default slice -}}
+    {{- range $species -}}
         {{- $species := . -}}
         {{- range first 1 ($species.examples | default slice) -}}
             {{- $clips = $clips | append (dict "name" $species.name "url" .url) -}}
@@ -25,22 +30,19 @@
 {{- $clip := index $clips 0 | default dict -}}
 {{- $audio := $clip.url -}}
 {{- $audioLabel := $clip.name -}}
-{{- $spectrogramID := printf "%s-%s" .spectrogramPrefix ($site.campaign | urlize) -}}
-{{- $image := "" -}}
-{{- with $site.content.image -}}
-    {{- with resources.Get . -}}
-        {{- $image = (.Fill "600x200 center webp").RelPermalink -}}
-    {{- end -}}
-{{- end -}}
+{{- $spectrogramID := printf "%s-%s" $spectrogramPrefix ($markerPage.Title | urlize) -}}
+{{- $image := resources.Get ($callout.image | default $locationPage.Params.image) -}}
+{{- $image = ($image.Fill "600x200 center webp").RelPermalink -}}
+{{- $link := $callout.link | default $locationPage.RelPermalink -}}
 
 <div class="site-info">
     <div class="site-info-visual">
-        {{ with $image }}<img class="site-info-image" src="{{ . }}" alt="{{ $site.campaign }} field site">{{ end }}
-        <h3 class="site-info-title">{{ $site.campaign }}</h3>
+        <img class="site-info-image" src="{{ $image }}" alt="{{ $markerPage.Title }} field location">
+        <h3 class="site-info-title">{{ $markerPage.Title }}</h3>
     </div>
 
     <div class="site-info-content">
-        <p class="site-info-text">{{ $site.description }}</p>
+        <p class="site-info-text">{{ $callout.description }}</p>
         {{ if $audio }}
         <div class="site-info-spectrogram">
             <oe-spectrogram
@@ -81,6 +83,6 @@
             </div>
         </div>
         {{ end }}
-        <sl-button class="a2o-tour-inline-button" href="{{ $site.page }}" variant="primary" size="small" pill>Learn More</sl-button>
+        <sl-button class="a2o-tour-inline-button" href="{{ $link }}" variant="primary" size="small" pill>{{ $callout.link_text | default "Learn More" }}</sl-button>
     </div>
 </div>
